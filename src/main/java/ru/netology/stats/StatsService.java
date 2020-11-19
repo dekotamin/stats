@@ -1,6 +1,6 @@
 package ru.netology.stats;
 
-public class StatsService<average> {
+public class StatsService {
 
     public long calculateSum(long[] purchases) {
         long sum = 0;
@@ -10,35 +10,56 @@ public class StatsService<average> {
         return sum;
     }
 
-    public long calculateAverage(long average) {
-        long sum = 0;
-        long purchase = 0;
-        long month = purchase;
-        long purchases = month;
-        for (purchase = 0; month < 13; purchases = month + month) {
-            average = purchases / 12;
+    public long calculateAverage(long[] purchases) {
+        long average = purchases[0];
+        long month = 12;
+        for (long purchase : purchases) {
+            average = purchases / month;
         }
         return average;
     }
 
-    public long calculateSaleMax(long maxSale, long average) {
-        long monthnumber = 0;
-        long sum = 0;
-        long monthnumber = sum;
-        for (monthnumber = 0; monthnumber < 12; average = sum + monthnumber++ / 12) {
-            maxSale >= average;
+    public long calculateMax(long[] purchases) {
+        long currentMax = purchases[0];
+        for (long purchase : purchases) {
+            if (currentMax < purchase) {
+                currentMax = purchase;
+            }
         }
-        return maxSale;
+        return currentMax;
     }
 
-    public long calculateSaleMin(long minSale, long average) {
-        long sum = 0;
-        long monthnumber = 0;
-        long monthnumber = sum;
-        for (monthnumber = 0; monthnumber < 12; average = sum + monthnumber++ / 12) {
-            minSale<average ;
+    public long calculateMin(long[] purchases) {
+        long currentMin = purchases[0];
+        for (long purchase : purchases) {
+            if (currentMin > purchase) {
+                currentMin = purchase;
+            }
+            return currentMin;
         }
-        return minSale;
+    }
+
+    public long calculateMinAverage(long[] purchases) {
+        long currentMin = purchases[0];
+        long months = 12;
+        long average = purchases / months;
+        for (long purchase : purchases) {
+            if (currentMin > average) {
+                currentMin = purchases + purchases;
+            }
+            return currentMin;
+        }
+    }
+
+    public long calculateMaxAverage(long[] purchases) {
+        long currentMax = purchases[0];
+        long months = 12;
+        long average = purchases / months;
+        for (long purchase : purchases) {
+            if (currentMax > average) {
+                currentMax = purchase;
+            }
+            return currentMax;
+        }
     }
 }
-
