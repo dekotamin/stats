@@ -19,7 +19,7 @@ class StatsServiceTest {
     void calculateMax() {
         StatsService service = new StatsService();
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int[] expected = {1, 3, 4, 5, 6, 7 ,1};
+        long[] expected = {1, 3, 4, 5, 6, 7, 11};
         long actual = service.calculateMax(purchases);
         assertEquals(expected, actual);
     }
@@ -28,10 +28,11 @@ class StatsServiceTest {
     void calculateMin() {
         StatsService service = new StatsService();
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        long [] expected = {0, 2, 8, 9, 10};
+        long[] expected = {8};
         long actual = service.calculateMin(purchases);
         assertEquals(expected, actual);
     }
+
     @Test
     void calculateMinAverage() {
         StatsService service = new StatsService();
@@ -40,12 +41,21 @@ class StatsServiceTest {
         long actual = service.calculateMinAverage(purchases);
         assertEquals(expected, actual);
     }
+
     @Test
     void calculateMaxAverage() {
         StatsService service = new StatsService();
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         long expected = 7;
         long actual = service.calculateMaxAverage(purchases);
+        assertEquals(expected, actual);
+    }
+    @Test
+    void calculateAverage() {
+        StatsService service = new StatsService();
+        long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expected = 15;
+        long actual = service.calculateAverage(purchases);
         assertEquals(expected, actual);
     }
 }

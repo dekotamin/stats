@@ -41,7 +41,7 @@ public class StatsService {
             long average = currentMin / 12;
             for (long purchase : purchases) {
                 if (currentMin < average) {
-                    currentMin = currentMin;
+                    currentMin = average + average;
                 }
             }
                 return currentMin;
