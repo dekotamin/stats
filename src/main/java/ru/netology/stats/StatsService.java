@@ -12,20 +12,18 @@ public class StatsService {
 
     public long calculateAverage(long[] purchases) {
         long average = purchases[0];
-        long month = 12;
         for (long purchase : purchases) {
-            average = purchases / month;
+            average = average / 12;
         }
         return average;
     }
 
     public long calculateMax(long[] purchases) {
         long currentMax = purchases[0];
-        for (long purchase : purchases) {
+        for (long purchase : purchases)
             if (currentMax < purchase) {
                 currentMax = purchase;
             }
-        }
         return currentMax;
     }
 
@@ -35,31 +33,27 @@ public class StatsService {
             if (currentMin > purchase) {
                 currentMin = purchase;
             }
-            return currentMin;
         }
+        return currentMin;
     }
-
-    public long calculateMinAverage(long[] purchases) {
-        long currentMin = purchases[0];
-        long months = 12;
-        long average = purchases / months;
-        for (long purchase : purchases) {
-            if (currentMin > average) {
-                currentMin = purchases + purchases;
+        public long calculateMinAverage(long[] purchases) {
+            long currentMin = purchases[0];
+            long average = currentMin / 12;
+            for (long purchase : purchases) {
+                if (currentMin < average) {
+                    currentMin = currentMin;
+                }
             }
-            return currentMin;
-        }
+                return currentMin;
     }
-
-    public long calculateMaxAverage(long[] purchases) {
+        public long calculateMaxAverage(long[] purchases) {
         long currentMax = purchases[0];
-        long months = 12;
-        long average = purchases / months;
-        for (long purchase : purchases) {
+        long average = currentMax / 12;
+        for (long purchase =0; purchase < 12; purchase++) {
             if (currentMax > average) {
-                currentMax = purchase;
+                currentMax = average;
             }
-            return currentMax;
         }
+            return currentMax;
     }
 }

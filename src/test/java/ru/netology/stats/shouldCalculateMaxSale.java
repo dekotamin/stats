@@ -11,7 +11,7 @@ class StatsServiceTest {
         StatsService service = new StatsService();
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         long expected = 180;
-        long actual = service.calculateSum( long[] purchases);
+        long actual = service.calculateSum(purchases);
         assertEquals(expected, actual);
     }
 
@@ -19,8 +19,8 @@ class StatsServiceTest {
     void calculateMax() {
         StatsService service = new StatsService();
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        long expected = 1, 3, 4, 5, 6, 7, 11;
-        long actual = service.calculateSum(purchases);
+        int[] expected = {1, 3, 4, 5, 6, 7 ,1};
+        long actual = service.calculateMax(purchases);
         assertEquals(expected, actual);
     }
 
@@ -28,8 +28,8 @@ class StatsServiceTest {
     void calculateMin() {
         StatsService service = new StatsService();
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        long expected = 0, 2, 8, 9, 10;
-        long actual = service.calculateSum(purchases);
+        long [] expected = {0, 2, 8, 9, 10};
+        long actual = service.calculateMin(purchases);
         assertEquals(expected, actual);
     }
     @Test
@@ -37,7 +37,7 @@ class StatsServiceTest {
         StatsService service = new StatsService();
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         long expected = 5;
-        long actual = service.calculateSum(purchases);
+        long actual = service.calculateMinAverage(purchases);
         assertEquals(expected, actual);
     }
     @Test
@@ -45,7 +45,7 @@ class StatsServiceTest {
         StatsService service = new StatsService();
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         long expected = 7;
-        long actual = service.calculateSum(purchases);
+        long actual = service.calculateMaxAverage(purchases);
         assertEquals(expected, actual);
     }
 }
