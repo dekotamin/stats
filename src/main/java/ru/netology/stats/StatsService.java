@@ -11,49 +11,66 @@ public class StatsService {
     }
 
     public long calculateAverage(long[] purchases) {
-        long average = purchases[0];
+        long sum = 0;
+        long average = sum;
         for (long purchase : purchases) {
-            average = average / 12;
-        }
-        return average;
-    }
-
-    public long calculateMax(long[] purchases) {
-        long currentMax = purchases[0];
-        for (long purchase : purchases)
-            if (currentMax < purchase) {
-                currentMax = purchase;
+            sum = sum + purchase;
+            average = sum / purchases.length;
             }
-        return currentMax;
+            return average;
+        }
+
+        public long calculateMax(long[] purchases) {
+        long currentMax = purchases[0];
+        long monthnumber = 0;
+        long currentnumber = 0;
+        for (long purchase : purchases) {
+            if (currentMax <= purchase) {
+                currentMax = purchase;
+                monthnumber = currentnumber;
+            }
+            currentnumber++;
+        }
+        return monthnumber;
     }
 
     public long calculateMin(long[] purchases) {
         long currentMin = purchases[0];
+        long monthnumber = 0;
+        long currentnumber = 0;
         for (long purchase : purchases) {
-            if (currentMin > purchase) {
+            if (purchase <= currentMin) {
                 currentMin = purchase;
+                monthnumber = currentnumber;
             }
+            currentnumber++;
         }
-        return currentMin;
+        return monthnumber;
     }
-        public long calculateMinAverage(long[] purchases) {
-            long currentMin = purchases[0];
-            long average = currentMin / 12;
-            for (long purchase : purchases) {
-                if (currentMin < average) {
-                    currentMin = average + average;
-                }
+
+    public long calculateMinAverage(long[] purchases) {
+        long sum = 0;
+        long average = sum;
+        long currentmin = 0;
+        for (long purchase : purchases) {
+            if (currentmin < average) {
+                currentmin = purchase;
+                currentmin = average + average;
             }
-                return currentMin;
+        } currentmin++;
+        return currentmin;
     }
-        public long calculateMaxAverage(long[] purchases) {
-        long currentMax = purchases[0];
-        long average = currentMax / 12;
-        for (long purchase =0; purchase < 12; purchase++) {
-            if (currentMax > average) {
-                currentMax = average;
+
+    public long calculateMaxAverage(long[] purchases) {
+        long sum = 0;
+        long average = sum;
+        long currentmax = 0;
+        for (long purchase : purchases) {
+            if (currentmax > average) {
+                currentmax = purchase;
+                currentmax = average + average;
             }
-        }
-            return currentMax;
+        } currentmax++;
+        return currentmax;
     }
 }
