@@ -12,18 +12,16 @@ public class StatsService {
 
     public long calculateAverage(long[] purchases) {
         long sum = 0;
-        long average = sum;
         for (long purchase : purchases) {
             sum = sum + purchase;
-            average = sum / purchases.length;
-            }
-            return average;
         }
+        return sum / purchases.length;
+    }
 
-        public long calculateMax(long[] purchases) {
+    public long calculateMax(long[] purchases) {
         long currentMax = purchases[0];
         long monthnumber = 0;
-        long currentnumber = 0;
+        long currentnumber = 1;
         for (long purchase : purchases) {
             if (currentMax <= purchase) {
                 currentMax = purchase;
@@ -37,7 +35,7 @@ public class StatsService {
     public long calculateMin(long[] purchases) {
         long currentMin = purchases[0];
         long monthnumber = 0;
-        long currentnumber = 0;
+        long currentnumber = 1;
         for (long purchase : purchases) {
             if (purchase <= currentMin) {
                 currentMin = purchase;
@@ -49,28 +47,25 @@ public class StatsService {
     }
 
     public long calculateMinAverage(long[] purchases) {
-        long sum = 0;
-        long average = sum;
-        long currentmin = 0;
+        long currentMin = purchases[0];
+        long average = currentMin / purchases.length;
         for (long purchase : purchases) {
-            if (currentmin < average) {
-                currentmin = purchase;
-                currentmin = average + average;
+            if (purchase <= average) {
+                currentMin = average;
             }
-        } currentmin++;
-        return currentmin;
+            currentMin++;
+        }
+        return currentMin++;
     }
 
     public long calculateMaxAverage(long[] purchases) {
-        long sum = 0;
-        long average = sum;
-        long currentmax = 0;
+        long average = purchases[0] / purchases.length;
+        long currentInMax = 0;
         for (long purchase : purchases) {
-            if (currentmax > average) {
-                currentmax = purchase;
-                currentmax = average + average;
+            if (purchase > average) {
+                currentInMax++;
             }
-        } currentmax++;
-        return currentmax;
+            return currentInMax;
+        }
     }
 }
