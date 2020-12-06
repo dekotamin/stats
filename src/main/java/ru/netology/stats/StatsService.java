@@ -2,6 +2,8 @@ package ru.netology.stats;
 
 public class StatsService {
 
+    private long[] purchases;
+
     public long calculateSum(long[] purchases) {
         long sum = 0;
         for (long purchase : purchases) {
@@ -11,14 +13,13 @@ public class StatsService {
     }
 
     public long calculateAverage(long[] purchases) {
-        long sum = 0;
+        long average = calculateSum(purchases) / purchases.length;
         for (long purchase : purchases) {
-            sum = sum + purchase;
         }
-        return sum / purchases.length;
-    }
+            return average;
+        }
 
-    public long calculateMax(long[] purchases) {
+        public long calculateMax(long[] purchases) {
         long currentMax = purchases[0];
         long monthnumber = 0;
         long currentnumber = 1;
@@ -47,25 +48,24 @@ public class StatsService {
     }
 
     public long calculateMinAverage(long[] purchases) {
-        long currentMin = purchases[0];
-        long average = currentMin / purchases.length;
+        long average = calculateAverage(purchases);
+        long countMonth = 0;
         for (long purchase : purchases) {
-            if (purchase <= average) {
-                currentMin = average;
+            if (purchase < average) {
+                countMonth++;
             }
-            currentMin++;
         }
-        return currentMin++;
-    }
+            return countMonth;
+        }
 
-    public long calculateMaxAverage(long[] purchases) {
-        long average = purchases[0] / purchases.length;
-        long currentInMax = 0;
+    public long calculateMaxAverage(long[] purchases){
+        long average = calculateAverage(purchases);
+        long countMonthMax = 0;
         for (long purchase : purchases) {
             if (purchase > average) {
-                currentInMax++;
+                countMonthMax++;
             }
-            return currentInMax;
         }
+        return countMonthMax;
     }
 }
